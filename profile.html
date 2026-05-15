@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile - TaskLink</title>
+<meta name="description" content="Manage your TaskLink profile and resume.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231A1A4E'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23fff' font-size='18' font-weight='bold' font-family='Inter'%3ETL%3C/text%3E%3Csvg%3E">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="top-bar">
+  <div class="container">
+    <nav class="top-bar-nav" aria-label="Top navigation">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="jobs.html">Browse Jobs</a>
+      <a href="about.html">Resources</a>
+    </nav>
+    <div class="top-bar-actions">
+      <a href="dashboard.html">My Tasks</a>
+      <a href="pricing.html" class="btn-cta-small">Upgrade</a>
+    </div>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">TL</div>
+      <span class="logo-text">Task<span>Link</span></span>
+    </a>
+    <nav class="header-nav" id="mainNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="jobs.html">Browse Jobs</a>
+      <a href="about.html">Resources</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="profile.html" class="active">Profile</a>
+    </nav>
+    <div class="header-actions" id="dashHeaderActions"></div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main-content">
+
+<section class="dashboard-page">
+  <div class="container">
+    <div class="dashboard-header">
+      <div>
+        <h1>My Profile</h1>
+        <p style="color:#6B687A;font-size:1.4rem;" id="profileWelcome">Complete your profile to stand out to employers.</p>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;">
+        <a href="dashboard.html" class="btn-outline" style="font-size:1.3rem;padding:0.4rem 1.2rem;">Back to Dashboard</a>
+      </div>
+    </div>
+
+    <div class="dashboard-grid" style="grid-template-columns:1fr;">
+
+      <div class="dash-card">
+        <h2>Basic Information</h2>
+        <form id="profileForm">
+          <div class="auth-error" id="profileError" style="display:none;"></div>
+          <div class="auth-success" id="profileSuccess" style="display:none;"></div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="profName">Full Name</label>
+              <input type="text" id="profName" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="profEmail">Email</label>
+              <input type="email" id="profEmail" disabled style="background:#F0EFEB;cursor:not-allowed;">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="profPhone">Phone</label>
+            <input type="tel" id="profPhone" placeholder="+1 555-0000">
+          </div>
+          <div class="form-group">
+            <label for="profBio">Professional Bio</label>
+            <textarea id="profBio" rows="4" placeholder="Tell employers about yourself, your experience, and what you're looking for..." style="width:100%;padding:1rem 1.2rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.5rem;font-family:inherit;resize:vertical;"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="profSkills">Skills (comma separated)</label>
+            <input type="text" id="profSkills" placeholder="e.g. JavaScript, Python, Project Management, Copywriting">
+          </div>
+          <div class="form-group">
+            <label for="profExperience">Work Experience</label>
+            <textarea id="profExperience" rows="4" placeholder="List your relevant work experience..." style="width:100%;padding:1rem 1.2rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.5rem;font-family:inherit;resize:vertical;"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="profEducation">Education</label>
+            <textarea id="profEducation" rows="3" placeholder="Your educational background..." style="width:100%;padding:1rem 1.2rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.5rem;font-family:inherit;resize:vertical;"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="profResume">Resume / Portfolio Link</label>
+            <input type="url" id="profResume" placeholder="https://your-resume-link.com">
+          </div>
+          <button type="submit" class="btn-submit">Save Profile</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo-text">Task<span style="color:#E85D3A;">Link</span></span>
+      <p>The #1 job site for verified remote jobs. No ads, scams, or junk. Discover a better way to work.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="jobs.html">Browse Jobs</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span class="current-year">2026</span> TaskLink. All rights reserved.</span>
+    <div class="footer-social">
+      <a href="#" aria-label="Facebook">FB</a>
+      <a href="#" aria-label="Twitter">TW</a>
+      <a href="#" aria-label="LinkedIn">LI</a>
+      <a href="#" aria-label="Instagram">IG</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

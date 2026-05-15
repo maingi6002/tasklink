@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - TaskLink</title>
+<meta name="description" content="TaskLink administration panel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231A1A4E'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23fff' font-size='18' font-weight='bold' font-family='Inter'%3ETL%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="top-bar" style="background:#E85D3A;">
+  <div class="container">
+    <nav class="top-bar-nav" aria-label="Admin navigation">
+      <span style="color:#fff;font-size:1.3rem;font-weight:600;">&#128736; ADMIN PANEL</span>
+    </nav>
+    <div class="top-bar-actions">
+      <a href="index.html" style="color:#fff;font-size:1.3rem;">&#127968; Home</a>
+      <a href="dashboard.html" style="color:#fff;font-size:1.3rem;">User View</a>
+      <a href="company/index.html" style="color:#fff;font-size:1.3rem;">&#127970; Employer Portal</a>
+      <a href="#" id="adminLogout" style="color:#fff;font-size:1.3rem;">Logout</a>
+    </div>
+  </div>
+</div>
+
+<main id="main-content">
+
+<section class="admin-page">
+  <div class="container">
+
+    <div class="admin-header">
+      <h1>Admin Panel</h1>
+      <span style="font-size:1.3rem;color:#6B687A;">Manage users, tasks, and website content</span>
+    </div>
+
+    <div class="admin-stat-cards" id="adminStats">
+      <div class="admin-stat"><div class="num" id="statUsers">0</div><div class="label">Users</div></div>
+      <div class="admin-stat"><div class="num" id="statTasks">0</div><div class="label">Total Tasks</div></div>
+      <div class="admin-stat"><div class="num" id="statPending">0</div><div class="label">Pending</div></div>
+      <div class="admin-stat"><div class="num" id="statApproved">0</div><div class="label">Approved</div></div>
+      <div class="admin-stat"><div class="num" id="statPayments">0</div><div class="label">Payments</div></div>
+      <div class="admin-stat"><div class="num" id="statWithdrawals">0</div><div class="label">Withdrawals Pending</div></div>
+      <div class="admin-stat"><div class="num" id="statEmpJobs">0</div><div class="label">Employer Jobs</div></div>
+      <div class="admin-stat"><div class="num" id="statEmpAccounts">0</div><div class="label">Employer Accounts</div></div>
+    </div>
+
+    <div class="admin-tabs">
+      <div class="admin-tab active" data-admin-tab="users">Users</div>
+      <div class="admin-tab" data-admin-tab="submissions">Task Submissions</div>
+      <div class="admin-tab" data-admin-tab="tasks">Manage Tasks</div>
+      <div class="admin-tab" data-admin-tab="payments">Payments</div>
+      <div class="admin-tab" data-admin-tab="withdrawals">Withdrawals</div>
+      <div class="admin-tab" data-admin-tab="empjobs">Employer Jobs</div>
+      <div class="admin-tab" data-admin-tab="empaccounts">Employer Accounts</div>
+    </div>
+
+    <div class="admin-panel active" id="adminUsers">
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Country</th><th>Continent</th><th>Access</th><th>Joined</th></tr></thead>
+          <tbody id="adminUsersBody"><tr><td colspan="7" style="text-align:center;color:#6B687A;">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="admin-panel" id="adminSubmissions">
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>User</th><th>Task</th><th>Pay</th><th>Work Note</th><th>Status</th><th>Submitted</th><th>Action</th></tr></thead>
+          <tbody id="adminSubmissionsBody"><tr><td colspan="7" style="text-align:center;color:#6B687A;">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="admin-panel" id="adminTasks">
+      <div style="margin-bottom:1.6rem;display:flex;gap:1rem;flex-wrap:wrap;">
+        <input type="text" id="newTaskTitle" placeholder="Task title" style="padding:0.8rem 1.2rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.3rem;flex:1;min-width:16rem;">
+        <input type="text" id="newTaskDesc" placeholder="Short description (shown on apply)" style="padding:0.8rem 1.2rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.3rem;flex:2;min-width:20rem;">
+        <input type="text" id="newTaskFullDesc" placeholder="Full description (shown after approval)" style="padding:0.8rem 1.2rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.3rem;flex:2;min-width:20rem;">
+        <input type="number" id="newTaskPay" placeholder="Pay ($)" step="0.01" min="0" style="padding:0.8rem 1.2rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.3rem;width:10rem;">
+        <select id="newTaskType" style="padding:0.8rem 1.2rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.3rem;">
+          <option value="beginner">Beginner</option>
+          <option value="complex">Complex</option>
+        </select>
+        <button class="admin-btn approve" onclick="addTask()" style="padding:0.8rem 1.6rem;font-size:1.3rem;">Add Task</button>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Title</th><th>Pay</th><th>Type</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="adminTasksBody"><tr><td colspan="5" style="text-align:center;color:#6B687A;">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="admin-panel" id="adminPayments">
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>User</th><th>Plan</th><th>Amount</th><th>Method</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
+          <tbody id="adminPaymentsBody"><tr><td colspan="7" style="text-align:center;color:#6B687A;">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="admin-panel" id="adminWithdrawals">
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>User</th><th>Amount</th><th>Method</th><th>Details</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
+          <tbody id="adminWithdrawalsBody"><tr><td colspan="7" style="text-align:center;color:#6B687A;">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="admin-panel" id="adminEmpjobs">
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Employer</th><th>Job Title</th><th>Company</th><th>Salary</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="adminEmpJobsBody"><tr><td colspan="6" style="text-align:center;color:#6B687A;">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="admin-panel" id="adminEmpAccounts">
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Name</th><th>Email</th><th>Company</th><th>Phone</th><th>Joined</th></tr></thead>
+          <tbody id="adminEmpAccountsBody"><tr><td colspan="5" style="text-align:center;color:#6B687A;">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<script src="js/script.js"></script>
+</body>
+</html>

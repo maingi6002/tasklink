@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In - TaskLink</title>
+<meta name="description" content="Sign in to your TaskLink account to access verified remote jobs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231A1A4E'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23fff' font-size='18' font-weight='bold' font-family='Inter'%3ETL%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="top-bar">
+  <div class="container">
+    <nav class="top-bar-nav" aria-label="Top navigation">
+      <a href="index.html">Home</a>
+      <a href="jobs.html">Browse Jobs</a>
+      <a href="company/index.html">Employers</a>
+      <a href="blog.html">Resources</a>
+    </nav>
+    <div class="top-bar-actions">
+      <a href="login.html">For Job Seekers</a>
+      <a href="company/index.html">For Employers</a>
+      <a href="register.html" class="btn-cta-small">Join Now</a>
+    </div>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">TL</div>
+      <span class="logo-text">Task<span>Link</span></span>
+    </a>
+    <nav class="header-nav" id="mainNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="jobs.html">Remote Jobs</a>
+      <a href="companies.html">Companies</a>
+      <a href="blog.html">Career Advice</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div class="header-actions">
+      <a href="login.html" class="btn-outline">Sign In</a>
+      <a href="register.html" class="btn-primary">Get Started</a>
+    </div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main-content">
+
+<section class="auth-page">
+  <div class="auth-page-box">
+    <div class="auth-page-icon">TL</div>
+    <h1>Welcome Back</h1>
+    <p class="auth-page-sub">Sign in to continue to TaskLink</p>
+    <form id="loginForm">
+      <div class="auth-error" id="loginError"></div>
+      <div class="form-group">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="loginPass">Password</label>
+        <input type="password" id="loginPass" placeholder="Enter your password" required>
+      </div>
+      <div style="text-align:right;margin-top:-0.8rem;margin-bottom:1.2rem;">
+        <a href="forgot-password.html" style="font-size:1.3rem;color:#E85D3A;text-decoration:none;">Forgot Password?</a>
+      </div>
+      <button type="submit" class="btn-submit">Sign In</button>
+    </form>
+    <p class="auth-page-switch">Don't have an account? <a href="register.html">Create one</a></p>
+  </div>
+</section>
+
+</main>
+
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+const express = require('express');
+const { getAll } = require('../database');
+
+const router = express.Router();
+
+const DEFAULT_JOBS = [
+  { id: 1, title: 'Senior Software Engineer, Remote', company: 'Stripe', salary: '$150K-200K', location: 'Remote (US)', type: 'Full-Time', posted: '2 days ago', category: 'Software Development', experience: 'Senior Level', fee: 5.00, feeLabel: 'Pro', description: 'Build and maintain Stripe\'s global payments platform.' },
+  { id: 2, title: 'Customer Success Manager', company: 'Airbnb', salary: '$85K-110K', location: 'Remote (Global)', type: 'Full-Time', posted: '3 days ago', category: 'Customer Service', experience: 'Mid Level', fee: 5.00, feeLabel: 'Pro' },
+  { id: 3, title: 'Data Analyst, Marketing Analytics', company: 'Dropbox', salary: '$95K-130K', location: 'Remote (US)', type: 'Full-Time', posted: '5 days ago', category: 'Data & Analytics', experience: 'Mid Level', fee: 0, feeLabel: '' },
+  { id: 4, title: 'Content Marketing Specialist', company: 'HubSpot', salary: '$70K-90K', location: 'Remote (US)', type: 'Full-Time', posted: '1 week ago', category: 'Marketing', experience: 'Entry Level', fee: 0, feeLabel: '' },
+  { id: 5, title: 'Technical Writer', company: 'GitLab', salary: '$80K-105K', location: 'Remote (Global)', type: 'Full-Time', posted: '1 week ago', category: 'Writing', experience: 'Mid Level', fee: 0, feeLabel: '' },
+  { id: 6, title: 'Product Designer', company: 'Figma', salary: '$120K-160K', location: 'Remote (US)', type: 'Full-Time', posted: '2 weeks ago', category: 'Design', experience: 'Senior Level', fee: 5.00, feeLabel: 'Pro' },
+  { id: 7, title: 'Project Manager, Engineering', company: 'Atlassian', salary: '$110K-145K', location: 'Remote (US)', type: 'Full-Time', posted: '2 weeks ago', category: 'Project Management', experience: 'Senior Level', fee: 5.00, feeLabel: 'Pro' },
+  { id: 8, title: 'Senior Accountant', company: 'Shopify', salary: '$85K-115K', location: 'Remote (Canada)', type: 'Full-Time', posted: '2 weeks ago', category: 'Finance', experience: 'Senior Level', fee: 0, feeLabel: '' },
+  { id: 9, title: 'HR Business Partner', company: 'Microsoft', salary: '$100K-135K', location: 'Remote (US)', type: 'Full-Time', posted: '3 weeks ago', category: 'Human Resources', experience: 'Senior Level', fee: 0, feeLabel: '' },
+  { id: 10, title: 'Junior Frontend Developer', company: 'Turing', salary: '$60K-80K', location: 'Remote (Global)', type: 'Full-Time', posted: '1 day ago', category: 'Software Development', experience: 'Entry Level', fee: 0, feeLabel: '' },
+  { id: 11, title: 'Virtual Assistant', company: 'Time Etc', salary: '$15-25/hr', location: 'Remote (Global)', type: 'Contract', posted: '3 days ago', category: 'Customer Service', experience: 'Entry Level', fee: 0, feeLabel: '' },
+  { id: 12, title: 'Social Media Manager', company: 'Buffer', salary: '$55K-75K', location: 'Remote (Global)', type: 'Full-Time', posted: '5 days ago', category: 'Marketing', experience: 'Mid Level', fee: 2.00, feeLabel: 'Premium' },
+  { id: 13, title: 'UX Researcher', company: 'Figma', salary: '$110K-150K', location: 'Remote (US)', type: 'Full-Time', posted: '1 week ago', category: 'Design', experience: 'Senior Level', fee: 5.00, feeLabel: 'Pro' },
+  { id: 14, title: 'Data Entry Clerk', company: 'ClickWorker', salary: '$12-18/hr', location: 'Remote (Global)', type: 'Freelance', posted: '2 days ago', category: 'Data & Analytics', experience: 'Entry Level', fee: 0, feeLabel: '' },
+  { id: 15, title: 'Customer Support Specialist', company: 'Zendesk', salary: '$45K-60K', location: 'Remote (US)', type: 'Full-Time', posted: '4 days ago', category: 'Customer Service', experience: 'Entry Level', fee: 0, feeLabel: '' },
+  { id: 16, title: 'Senior DevOps Engineer', company: 'DigitalOcean', salary: '$140K-190K', location: 'Remote (US)', type: 'Full-Time', posted: '1 week ago', category: 'Software Development', experience: 'Senior Level', fee: 5.00, feeLabel: 'Pro' },
+  { id: 17, title: 'Copywriter', company: 'Copy.ai', salary: '$65K-85K', location: 'Remote (Global)', type: 'Full-Time', posted: '3 days ago', category: 'Writing', experience: 'Mid Level', fee: 2.00, feeLabel: 'Premium' },
+  { id: 18, title: 'Financial Analyst', company: 'Stripe', salary: '$90K-120K', location: 'Remote (US)', type: 'Full-Time', posted: '2 weeks ago', category: 'Finance', experience: 'Mid Level', fee: 0, feeLabel: '' }
+];
+
+router.get('/', (req, res) => {
+  const empJobs = getAll("SELECT *, id as uid FROM employer_jobs WHERE status = 'approved'");
+  let nextId = 100;
+  const mapped = empJobs.map(j => ({
+    id: nextId++, title: j.title, company: j.company, salary: j.salary || 'N/A',
+    location: j.location || 'Remote', type: j.type || 'Full-Time', posted: 'Recently',
+    category: j.category || 'Other', experience: j.experience || 'Any Level',
+    fee: j.fee || 0, description: j.description || '', isEmployerJob: true,
+    responsibilities: j.responsibilities || '', qualifications: j.qualifications || '',
+    benefits: j.benefits || '', requirementsList: j.requirements_list || ''
+  }));
+  res.json(DEFAULT_JOBS.concat(mapped));
+});
+
+router.get('/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  let job = DEFAULT_JOBS.find(j => j.id === id);
+  if (!job) {
+    const empJobs = getAll("SELECT *, id as uid FROM employer_jobs WHERE status = 'approved'");
+    let nextId = 100;
+    empJobs.forEach(j => {
+      const mid = nextId++;
+      if (mid === id) {
+        job = { id: mid, title: j.title, company: j.company, salary: j.salary || 'N/A', location: j.location || 'Remote', type: j.type || 'Full-Time', posted: 'Recently', category: j.category || 'Other', experience: j.experience || 'Any Level', fee: j.fee || 0, description: j.description || '', isEmployerJob: true, responsibilities: j.responsibilities || '', qualifications: j.qualifications || '', benefits: j.benefits || '', requirementsList: j.requirements_list || '' };
+      }
+    });
+  }
+  if (!job) return res.status(404).json({ error: 'Job not found' });
+  res.json(job);
+});
+
+router.get('/companies/directory', (req, res) => {
+  const companies = {};
+  DEFAULT_JOBS.forEach(j => {
+    if (!companies[j.company]) companies[j.company] = { name: j.company, count: 0, categories: {}, salary: j.salary };
+    companies[j.company].count++;
+    companies[j.company].categories[j.category] = true;
+  });
+  res.json(Object.keys(companies).sort().map(c => ({ name: c, count: companies[c].count, categories: Object.keys(companies[c].categories), salary: companies[c].salary })));
+});
+
+module.exports = router;

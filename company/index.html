@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employer Portal - Post Jobs - TaskLink</title>
+<meta name="description" content="Employer portal for TaskLink. Post jobs, manage listings, and find top remote talent.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231A1A4E'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23fff' font-size='18' font-weight='bold' font-family='Inter'%3ETL%3C/text%3E%3Csvg%3E">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="top-bar">
+  <div class="container">
+    <nav class="top-bar-nav" aria-label="Top navigation">
+      <a href="../index.html">Home</a>
+      <a href="../jobs.html">Browse Jobs</a>
+      <a href="index.html">Employers</a>
+      <a href="../about.html">Resources</a>
+    </nav>
+    <div class="top-bar-actions">
+      <a href="../login.html">For Job Seekers</a>
+      <a href="index.html">For Employers</a>
+      <a href="../register.html" class="btn-cta-small">Join Now</a>
+    </div>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="container">
+    <a href="../index.html" class="logo">
+      <div class="logo-icon">TL</div>
+      <span class="logo-text">Task<span>Link</span></span>
+    </a>
+    <nav class="header-nav" id="mainNav" aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="../jobs.html">Remote Jobs</a>
+      <a href="../jobs.html">Job Search</a>
+      <a href="../about.html">Career Advice</a>
+      <a href="../pricing.html">Pricing</a>
+    </nav>
+    <div class="header-actions">
+      <a href="../login.html" class="btn-outline">Sign In</a>
+      <a href="../register.html" class="btn-primary">Get Started</a>
+    </div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main-content">
+
+<section class="auth-page" id="employerLoginSection">
+  <div class="auth-page-box auth-page-box--wide">
+    <div class="auth-page-icon">&#127970;</div>
+    <h1>Employer Portal</h1>
+    <p class="auth-page-sub">Sign in or create an employer account to post jobs</p>
+
+    <div class="emp-tabs" style="display:flex;border-bottom:1px solid #E8E6E0;margin-bottom:2rem;">
+      <div class="emp-tab active" data-emp-tab="login" style="flex:1;text-align:center;padding:1rem;cursor:pointer;font-weight:500;font-size:1.5rem;color:#6B687A;border-bottom:2px solid transparent;">Sign In</div>
+      <div class="emp-tab" data-emp-tab="register" style="flex:1;text-align:center;padding:1rem;cursor:pointer;font-weight:500;font-size:1.5rem;color:#6B687A;border-bottom:2px solid transparent;">Create Account</div>
+    </div>
+
+    <div class="emp-panel active" id="empLogin">
+      <form id="employerLoginForm">
+        <div class="auth-error" id="empLoginError"></div>
+        <div class="form-group">
+          <label for="empLoginEmail">Email</label>
+          <input type="email" id="empLoginEmail" placeholder="you@company.com" required>
+        </div>
+        <div class="form-group">
+          <label for="empLoginPass">Password</label>
+          <input type="password" id="empLoginPass" placeholder="Enter password" required>
+        </div>
+        <button type="submit" class="btn-submit">Sign In</button>
+      </form>
+    </div>
+
+    <div class="emp-panel" id="empRegister">
+      <form id="employerRegForm">
+        <div class="auth-error" id="empRegError"></div>
+        <div class="auth-success" id="empRegSuccess"></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="empRegName">Full Name</label>
+            <input type="text" id="empRegName" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="empRegEmail">Email</label>
+            <input type="email" id="empRegEmail" placeholder="you@company.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="empRegCompany">Company Name</label>
+            <input type="text" id="empRegCompany" placeholder="Acme Inc." required>
+          </div>
+          <div class="form-group">
+            <label for="empRegPhone">Phone Number</label>
+            <input type="tel" id="empRegPhone" placeholder="+1 555-0000" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="empRegPass">Password</label>
+          <input type="password" id="empRegPass" placeholder="Min 6 characters" required>
+        </div>
+        <button type="submit" class="btn-submit">Create Employer Account</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="auth-page" id="employerDashboard" style="display:none;">
+  <div class="container" style="max-width:80rem;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;">
+      <div>
+        <h1>Employer Dashboard</h1>
+        <p style="color:#6B687A;font-size:1.4rem;" id="employerName"></p>
+      </div>
+      <div style="display:flex;gap:0.8rem;">
+        <a href="../jobs.html" class="btn-outline" style="font-size:1.3rem;padding:0.4rem 1.2rem;">View Job Board</a>
+        <a href="../admin.html" class="btn-outline" id="empAdminLink" style="font-size:1.3rem;padding:0.4rem 1.2rem;color:#E85D3A;border-color:#E85D3A;display:none;">&#128736; Admin Panel</a>
+        <a href="#" id="employerLogout" class="btn-outline" style="font-size:1.3rem;padding:0.4rem 1.2rem;color:#C83232;border-color:#C83232;">Logout</a>
+      </div>
+    </div>
+
+    <div class="dash-card" style="margin-bottom:2rem;">
+      <h2 style="font-size:1.8rem;">Post a New Job</h2>
+      <p style="font-size:1.3rem;color:#6B687A;margin-bottom:1.6rem;">Fill out the job details below. Admin reviews all postings before they go live.</p>
+      <form id="employerPostJobForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ejobTitle">Job Title</label>
+            <input type="text" id="ejobTitle" placeholder="e.g. Senior Software Engineer" required>
+          </div>
+          <div class="form-group">
+            <label for="ejobCompany">Company Name</label>
+            <input type="text" id="ejobCompany" placeholder="e.g. Acme Inc." required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ejobSalary">Salary Range / Pay</label>
+            <input type="text" id="ejobSalary" placeholder="e.g. $100K-150K or $50/hr">
+          </div>
+          <div class="form-group">
+            <label for="ejobLocation">Job Location</label>
+            <input type="text" id="ejobLocation" placeholder="e.g. Remote (US) or Nairobi, Kenya">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ejobType">Employment Type</label>
+            <select id="ejobType">
+              <option value="Full-Time">Full-Time</option>
+              <option value="Part-Time">Part-Time</option>
+              <option value="Contract">Contract</option>
+              <option value="Freelance">Freelance</option>
+              <option value="Temporary">Temporary</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ejobCategory">Job Category</label>
+            <select id="ejobCategory">
+              <option value="Software Development">Software Development</option>
+              <option value="Customer Service">Customer Service</option>
+              <option value="Data & Analytics">Data & Analytics</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Finance">Finance & Accounting</option>
+              <option value="Writing">Writing & Editing</option>
+              <option value="Human Resources">Human Resources</option>
+              <option value="Project Management">Project Management</option>
+              <option value="Design">Design & Creative</option>
+              <option value="Sales">Sales</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ejobExperience">Experience Level Required</label>
+            <select id="ejobExperience">
+              <option value="Entry Level">Entry Level</option>
+              <option value="Mid Level">Mid Level</option>
+              <option value="Senior Level">Senior Level</option>
+              <option value="Manager">Manager</option>
+              <option value="Executive">Executive</option>
+              <option value="Any Level">Any Level</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ejobFee">Application Fee ($) — 0 for free</label>
+            <input type="number" id="ejobFee" step="0.01" min="0" value="0" placeholder="0.00">
+          </div>
+        </div>
+
+        <div style="border:1px solid #E8E6E0;border-radius:0.6rem;padding:1.6rem;margin-bottom:1.6rem;background:#F7F5F0;">
+          <h3 style="font-size:1.5rem;margin-bottom:1.2rem;">Full Job Details (visible to applicants)</h3>
+          <table style="width:100%;border-collapse:collapse;">
+            <tr>
+              <td style="padding:0.6rem 0.8rem;font-weight:500;font-size:1.3rem;vertical-align:top;width:14rem;">Responsibilities</td>
+              <td style="padding:0.4rem 0;"><textarea id="ejobResponsibilities" rows="4" placeholder="List key responsibilities for this role..." style="width:100%;padding:0.8rem 1rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.4rem;font-family:inherit;resize:vertical;"></textarea></td>
+            </tr>
+            <tr>
+              <td style="padding:0.6rem 0.8rem;font-weight:500;font-size:1.3rem;vertical-align:top;">Qualifications</td>
+              <td style="padding:0.4rem 0;"><textarea id="ejobQualifications" rows="4" placeholder="List required qualifications, skills, and experience..." style="width:100%;padding:0.8rem 1rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.4rem;font-family:inherit;resize:vertical;"></textarea></td>
+            </tr>
+            <tr>
+              <td style="padding:0.6rem 0.8rem;font-weight:500;font-size:1.3rem;vertical-align:top;">Benefits</td>
+              <td style="padding:0.4rem 0;"><textarea id="ejobBenefits" rows="3" placeholder="List benefits, perks, and compensation details..." style="width:100%;padding:0.8rem 1rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.4rem;font-family:inherit;resize:vertical;"></textarea></td>
+            </tr>
+            <tr>
+              <td style="padding:0.6rem 0.8rem;font-weight:500;font-size:1.3rem;vertical-align:top;">Requirements (one per line)</td>
+              <td style="padding:0.4rem 0;"><textarea id="ejobRequirementsList" rows="4" placeholder="Must have 5+ years experience&#10;Proficiency in React&#10;Excellent communication skills&#10;..." style="width:100%;padding:0.8rem 1rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.4rem;font-family:inherit;resize:vertical;"></textarea></td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="form-group">
+          <label for="ejobDescription">Full Job Description</label>
+          <textarea id="ejobDescription" rows="8" placeholder="Describe the role in detail — what the candidate will do, your company culture, growth opportunities, and anything else applicants should know..." style="width:100%;padding:1rem 1.2rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.5rem;font-family:inherit;resize:vertical;" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Submit Job for Admin Review</button>
+      </form>
+    </div>
+
+    <div class="dash-card">
+      <h2 style="font-size:1.8rem;">My Posted Jobs</h2>
+      <div id="employerMyJobs">
+        <p style="color:#6B687A;font-size:1.3rem;">No jobs posted yet.</p>
+      </div>
+    </div>
+
+    <div class="dash-card">
+      <h2 style="font-size:1.8rem;">Applicants</h2>
+      <p style="font-size:1.3rem;color:#6B687A;margin-bottom:1.6rem;">People who applied for your approved jobs.</p>
+      <div id="employerApplicants">
+        <p style="color:#6B687A;font-size:1.3rem;">No applications yet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo-text">Task<span style="color:#E85D3A;">Link</span></span>
+      <p>The #1 job site for verified remote jobs. No ads, scams, or junk. Discover a better way to work.</p>
+    </div>
+    <div>
+      <h4>Job Seekers</h4>
+      <ul>
+        <li><a href="../jobs.html">Browse Jobs</a></li>
+        <li><a href="#">Job Search Tips</a></li>
+        <li><a href="../about.html">Career Advice</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Employers</h4>
+      <ul>
+        <li><a href="index.html">Post a Job</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li><a href="#">Resources</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span class="current-year">2026</span> TaskLink. All rights reserved.</span>
+    <div class="footer-social">
+      <a href="#" aria-label="Facebook">FB</a>
+      <a href="#" aria-label="Twitter">TW</a>
+      <a href="#" aria-label="LinkedIn">LI</a>
+      <a href="#" aria-label="Instagram">IG</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/script.js"></script>
+</body>
+</html>

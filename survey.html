@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tell Us About Yourself - TaskLink</title>
+<meta name="description" content="Help us match you with the right remote jobs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231A1A4E'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23fff' font-size='18' font-weight='bold' font-family='Inter'%3ETL%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="top-bar">
+  <div class="container">
+    <nav class="top-bar-nav" aria-label="Top navigation">
+      <a href="index.html">Home</a>
+      <a href="jobs.html">Browse Jobs</a>
+      <a href="company/index.html">Employer Login</a>
+      <a href="about.html">Resources</a>
+    </nav>
+    <div class="top-bar-actions">
+      <a href="login.html">For Job Seekers</a>
+      <a href="company/index.html">For Employers</a>
+      <a href="register.html" class="btn-cta-small">Join Now</a>
+    </div>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">TL</div>
+      <span class="logo-text">Task<span>Link</span></span>
+    </a>
+    <nav class="header-nav" id="mainNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="jobs.html">Remote Jobs</a>
+      <a href="jobs.html">Job Search</a>
+      <a href="about.html">Career Advice</a>
+      <a href="pricing.html">Pricing</a>
+    </nav>
+    <div class="header-actions" id="dashHeaderActions">
+      <a href="login.html" class="btn-outline">Sign In</a>
+      <a href="register.html" class="btn-primary">Get Started</a>
+    </div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main-content">
+
+<section class="auth-page">
+  <div class="auth-page-box auth-page-box--wide">
+    <div class="auth-page-icon">&#128203;</div>
+    <h1>Tell Us About Yourself</h1>
+    <p class="auth-page-sub">Help us match you with the right remote opportunities. This takes just a minute.</p>
+
+    <form id="surveyForm">
+      <div class="auth-error" id="surveyError" style="display:none;"></div>
+      <div class="auth-success" id="surveySuccess" style="display:none;"></div>
+
+      <div class="form-group">
+        <label for="surveySkills">What skills do you have?</label>
+        <textarea id="surveySkills" rows="4" placeholder="e.g. Python, data entry, customer service, graphic design, writing, virtual assistance..." style="width:100%;padding:1rem 1.2rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.5rem;font-family:inherit;resize:vertical;" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="surveyExperience">Tell us about your work experience</label>
+        <textarea id="surveyExperience" rows="4" placeholder="e.g. 3 years of customer service, 1 year of freelance writing, entry-level looking for first remote job..." style="width:100%;padding:1rem 1.2rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.5rem;font-family:inherit;resize:vertical;" required></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="surveyJobType">What type of work are you looking for?</label>
+          <select id="surveyJobType" style="width:100%;padding:1rem 1.2rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.5rem;font-family:inherit;">
+            <option value="beginner">Beginner / Entry-Level Tasks</option>
+            <option value="professional">Professional / Complex Jobs</option>
+            <option value="both">Both</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="surveyAvailability">Availability</label>
+          <select id="surveyAvailability" style="width:100%;padding:1rem 1.2rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.5rem;font-family:inherit;">
+            <option value="few-hours">A few hours per week</option>
+            <option value="part-time">Part-time (10-20 hrs/week)</option>
+            <option value="full-time">Full-time (30+ hrs/week)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="surveyGoals">What are your career goals?</label>
+        <textarea id="surveyGoals" rows="3" placeholder="e.g. Build a freelance career, earn extra income, transition to remote work full-time..." style="width:100%;padding:1rem 1.2rem;border:1px solid #D4D2D8;border-radius:0.4rem;font-size:1.5rem;font-family:inherit;resize:vertical;"></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit" id="surveySubmitBtn">Continue to Choose Your Plan</button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo-text">Task<span style="color:#E85D3A;">Link</span></span>
+      <p>The #1 job site for verified remote jobs. No ads, scams, or junk.</p>
+    </div>
+    <div>
+      <h4>Job Seekers</h4>
+      <ul>
+        <li><a href="jobs.html">Browse Jobs</a></li>
+        <li><a href="#">Job Search Tips</a></li>
+        <li><a href="about.html">Career Advice</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Employers</h4>
+      <ul>
+        <li><a href="company/index.html">Post a Job</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span class="current-year">2026</span> TaskLink. All rights reserved.</span>
+    <div class="footer-social">
+      <a href="#" aria-label="Facebook">FB</a>
+      <a href="#" aria-label="Twitter">TW</a>
+      <a href="#" aria-label="LinkedIn">LI</a>
+      <a href="#" aria-label="Instagram">IG</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

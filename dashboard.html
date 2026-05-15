@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - TaskLink</title>
+<meta name="description" content="Your TaskLink dashboard - manage tasks and track earnings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231A1A4E'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23fff' font-size='18' font-weight='bold' font-family='Inter'%3ETL%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="top-bar">
+  <div class="container">
+    <nav class="top-bar-nav" aria-label="Top navigation">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="jobs.html">Browse Jobs</a>
+      <a href="about.html">Resources</a>
+    </nav>
+    <div class="top-bar-actions">
+      <a href="dashboard.html">My Tasks</a>
+      <a href="pricing.html" class="btn-cta-small">Upgrade</a>
+    </div>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">TL</div>
+      <span class="logo-text">Task<span>Link</span></span>
+    </a>
+    <nav class="header-nav" id="mainNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="jobs.html">Browse Jobs</a>
+      <a href="about.html">Resources</a>
+      <a href="pricing.html">Pricing</a>
+    </nav>
+    <div class="header-actions" id="dashHeaderActions"></div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main-content">
+
+<section class="dashboard-page">
+  <div class="container">
+    <div class="dashboard-header">
+      <div>
+        <h1>Dashboard</h1>
+        <p style="color:#6B687A;font-size:1.4rem;" id="dashWelcome">Welcome back!</p>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;">
+        <span style="font-size:1.3rem;color:#6B687A;" id="earningsDisplay">Earnings: $0.00</span>
+        <a href="jobs.html" class="btn-outline" style="font-size:1.3rem;padding:0.4rem 1.2rem;">Browse Jobs</a>
+        <a href="profile.html" class="btn-outline" style="font-size:1.3rem;padding:0.4rem 1.2rem;">&#128100; Profile</a>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+
+      <div class="dash-card">
+        <h2>Beginner Tasks</h2>
+        <p style="font-size:1.3rem;color:#6B687A;margin-bottom:1.6rem;">Complete micro-tasks and earn. Admin reviews and approves your work.</p>
+        <div id="beginnerTasksList">
+          <p style="color:#6B687A;font-size:1.3rem;">Loading tasks...</p>
+        </div>
+      </div>
+
+      <div class="dash-card">
+        <h2>My Submissions</h2>
+        <p style="font-size:1.3rem;color:#6B687A;margin-bottom:1.6rem;">Track the status of your completed work.</p>
+        <div id="mySubmissionsList">
+          <p style="color:#6B687A;font-size:1.3rem;">No submissions yet.</p>
+        </div>
+      </div>
+
+      <div class="dash-card">
+        <h2>&#9733; Saved Jobs</h2>
+        <p style="font-size:1.3rem;color:#6B687A;margin-bottom:1.6rem;">Jobs you've saved for later.</p>
+        <div id="favoritesList">
+          <p style="color:#6B687A;font-size:1.3rem;">No saved jobs yet.</p>
+        </div>
+      </div>
+
+      <div class="dash-card">
+        <h2>&#128203; My Applications</h2>
+        <p style="font-size:1.3rem;color:#6B687A;margin-bottom:1.6rem;">Track your job applications.</p>
+        <div id="myApplicationsList">
+          <p style="color:#6B687A;font-size:1.3rem;">No applications yet.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:2.4rem;">
+      <div class="dash-card">
+        <h2>Complex Tasks (Premium &amp; Pro)</h2>
+        <p style="font-size:1.3rem;color:#6B687A;margin-bottom:1.6rem;">For higher-paying jobs, send your application letter to the email below. Admin will review and approve.</p>
+        <div id="complexTasksList">
+          <p style="color:#6B687A;font-size:1.3rem;">Loading...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="withdraw-section">
+      <div class="withdraw-card">
+        <h2>Withdraw Earnings</h2>
+        <div class="balance" id="walletBalance">$0.00</div>
+        <div class="min-note">Minimum withdrawal: <strong>$10.00</strong></div>
+        <p style="font-size:1.3rem;color:#6B687A;margin-bottom:1.2rem;">Select your payout method:</p>
+        <div class="withdraw-methods" id="withdrawMethods">
+          <button class="withdraw-method-btn" data-wmethod="mpesa">
+            <span class="wm-icon">&#128179;</span>
+            <div><div class="wm-label">M-Pesa</div><div style="font-size:1.1rem;color:#6B687A;">Phone payment</div></div>
+          </button>
+          <button class="withdraw-method-btn" data-wmethod="paypal">
+            <span class="wm-icon">&#128188;</span>
+            <div><div class="wm-label">PayPal</div><div style="font-size:1.1rem;color:#6B687A;">Email transfer</div></div>
+          </button>
+          <button class="withdraw-method-btn" data-wmethod="airtel">
+            <span class="wm-icon">&#128179;</span>
+            <div><div class="wm-label">Airtel Money</div><div style="font-size:1.1rem;color:#6B687A;">Airtel payment</div></div>
+          </button>
+          <button class="withdraw-method-btn" data-wmethod="bank">
+            <span class="wm-icon">&#127974;</span>
+            <div><div class="wm-label">Bank Transfer</div><div style="font-size:1.1rem;color:#6B687A;">Direct deposit</div></div>
+          </button>
+        </div>
+        <input type="text" class="withdraw-input" id="withdrawAccount" placeholder="Enter your account/phone/email for payout">
+        <button class="withdraw-btn" id="withdrawBtn">Request Withdrawal</button>
+        <div id="withdrawMsg" style="font-size:1.3rem;margin-top:0.8rem;"></div>
+        <div class="withdraw-history" id="withdrawHistory">
+          <p style="font-size:1.3rem;color:#6B687A;font-weight:500;margin-bottom:0.8rem;">Withdrawal History</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo-text">Task<span style="color:#E85D3A;">Link</span></span>
+      <p>The #1 job site for verified remote jobs. No ads, scams, or junk. Discover a better way to work.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="jobs.html">Browse Jobs</a></li>
+        <li><a href="about.html">Career Advice</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Report Issue</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span class="current-year">2026</span> TaskLink. All rights reserved.</span>
+    <div class="footer-social">
+      <a href="#" aria-label="Facebook">FB</a>
+      <a href="#" aria-label="Twitter">TW</a>
+      <a href="#" aria-label="LinkedIn">LI</a>
+      <a href="#" aria-label="Instagram">IG</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

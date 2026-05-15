@@ -1,0 +1,3 @@
+node_modules/
+backend/tasklink.db
+.DS_Store

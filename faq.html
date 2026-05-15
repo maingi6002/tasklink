@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ - TaskLink</title>
+<meta name="description" content="Frequently asked questions about TaskLink. Learn how our platform works.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231A1A4E'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23fff' font-size='18' font-weight='bold' font-family='Inter'%3ETL%3C/text%3E%3Csvg%3E">
+<style>
+.faq-item { border-bottom:1px solid #E8E6E0; padding:1.6rem 0; }
+.faq-q { font-weight:600; font-size:1.6rem; color:#1A1A4E; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+.faq-q:hover { color:#E85D3A; }
+.faq-a { max-height:0; overflow:hidden; transition:max-height 0.3s ease, padding 0.3s ease; padding:0; color:#2D2B3A; font-size:1.4rem; line-height:1.7; }
+.faq-a.open { max-height:50rem; padding:1rem 0 0.5rem 0; }
+.faq-arrow { transition:transform 0.3s ease; font-size:1.8rem; }
+.faq-arrow.open { transform:rotate(180deg); }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="top-bar">
+  <div class="container">
+    <nav class="top-bar-nav" aria-label="Top navigation">
+      <a href="index.html">Home</a>
+      <a href="jobs.html">Browse Jobs</a>
+      <a href="company/index.html">Employers</a>
+      <a href="about.html">Resources</a>
+    </nav>
+    <div class="top-bar-actions">
+      <a href="login.html">For Job Seekers</a>
+      <a href="company/index.html">For Employers</a>
+      <a href="register.html" class="btn-cta-small">Join Now</a>
+    </div>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">TL</div>
+      <span class="logo-text">Task<span>Link</span></span>
+    </a>
+    <nav class="header-nav" id="mainNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="jobs.html">Remote Jobs</a>
+      <a href="jobs.html">Job Search</a>
+      <a href="about.html">Career Advice</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div class="header-actions">
+      <a href="login.html" class="btn-outline">Sign In</a>
+      <a href="register.html" class="btn-primary">Get Started</a>
+    </div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main-content">
+
+<section class="page-header">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a> / FAQ</p>
+    <h1>Frequently Asked Questions</h1>
+    <p>Everything you need to know about TaskLink.</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container" style="max-width:76rem;padding:3rem 2rem;">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.faq-arrow').classList.toggle('open');">What is TaskLink? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">TaskLink is a premium remote job platform connecting job seekers with verified remote, freelance, and flexible work opportunities. Every listing is manually reviewed to ensure it is legitimate and scam-free.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.faq-arrow').classList.toggle('open');">How is TaskLink different from other job boards? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">Unlike Indeed or LinkedIn, every job on TaskLink is manually vetted by our research team. We filter out scams, MLMs, and low-quality listings. Our platform focuses exclusively on remote and flexible work, with no ads or irrelevant postings.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.faq-arrow').classList.toggle('open');">How do I get started? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">Create a free account, complete a short skills survey, choose a plan that fits your needs, make payment, and verify your OTP. Once your plan is active, you can access tasks and apply for jobs immediately.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.faq-arrow').classList.toggle('open');">What plans do you offer? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">We offer four tiers: Free ($0) — browse jobs only, Beginner ($1) — access micro-tasks, Premium ($2) — full access to jobs under $10/hr, and Pro ($5 per job) — access to all jobs including high-paying ones paying $10+/hr.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.faq-arrow').classList.toggle('open');">How do payments work? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">We support M-Pesa (Paybill 400200, Account 1158263) and PayPal (maingi6002@gmail.com). After payment, our admin team confirms and generates a one-time OTP sent to your email. Enter the OTP on our verification page to activate your plan.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.faq-arrow').classList.toggle('open');">How do I earn money? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">Complete beginner tasks (earn $0.50-$2.00 per task) or apply for complex/pro jobs (earn $10-$5000). Our admin team reviews your submissions. Once approved, earnings are added to your wallet balance.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.faq-arrow').classList.toggle('open');">How do I withdraw my earnings? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">Minimum withdrawal is $10. We support M-Pesa, PayPal, Airtel Money, and Bank Transfer. Submit a withdrawal request from your dashboard. Admin reviews and processes payouts.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.faq-arrow').classList.toggle('open');">How do employers post jobs? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">Employers register at our Employer Portal, fill out a structured job form with full details, and submit for admin review. Once approved, the job appears on our public job board for qualified applicants.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.faq-arrow').classList.toggle('open');">Is my data safe? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">We take privacy seriously. Your personal information is stored securely and never shared with third parties without your consent. See our Privacy Policy for details.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.faq-arrow').classList.toggle('open');">How do I contact support? <span class="faq-arrow">&#9660;</span></div>
+      <div class="faq-a">Email us at <a href="mailto:tasklink69@gmail.com" style="color:#E85D3A;">tasklink69@gmail.com</a>. Our team typically responds within 24 hours.</div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo-text">Task<span style="color:#E85D3A;">Link</span></span>
+      <p>The #1 job site for verified remote jobs. No ads, scams, or junk. Discover a better way to work.</p>
+    </div>
+    <div>
+      <h4>Job Seekers</h4>
+      <ul>
+        <li><a href="jobs.html">Browse Jobs</a></li>
+        <li><a href="about.html">Career Advice</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Employers</h4>
+      <ul>
+        <li><a href="company/index.html">Post a Job</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span class="current-year">2026</span> TaskLink. All rights reserved.</span>
+    <div class="footer-social">
+      <a href="#" aria-label="Facebook">FB</a>
+      <a href="#" aria-label="Twitter">TW</a>
+      <a href="#" aria-label="LinkedIn">LI</a>
+      <a href="#" aria-label="Instagram">IG</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
