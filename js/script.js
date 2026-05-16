@@ -185,6 +185,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // ── Pricing subscribe handler ──
+  qsa('[data-subscribe]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var plan = this.getAttribute('data-subscribe');
+      var email = ls('tl_user_email');
+      if (!email || ls('tl_logged_in') !== 'true') {
+        sessionStorage.setItem('tl_pending_plan', plan);
+        window.location.href = 'login.html';
+      } else {
+        window.location.href = 'payment.html?plan=' + plan;
+      }
+    });
+  });
+
   // ── Job data ──
   var JOBS = [
     { id: 1, title: 'Senior Software Engineer, Remote', company: 'Stripe', salary: '$150K-200K', location: 'Remote (US)', type: 'Full-Time', posted: '2 days ago', category: 'Software Development', experience: 'Senior Level', fee: 5.00, feeLabel: 'Pro', description: 'Stripe is looking for a Senior Software Engineer to join our Remote Infrastructure team. You will help build and maintain the systems that power Stripe\'s global payments platform.', benefits: ['Competitive salary and equity package', 'Comprehensive health, dental, and vision insurance', 'Flexible PTO policy', 'Remote work stipend', 'Annual learning & development budget', 'Home office setup allowance'], qualifications: ['5+ years of professional software engineering experience', 'Strong proficiency in at least one of: Go, Ruby, Java, or Python', 'Experience building and operating distributed systems at scale', 'Excellent communication and collaboration skills', 'Experience with cloud infrastructure (AWS, GCP, or Azure)'], whatYoullDo: ['Design, build, and maintain scalable distributed systems', 'Collaborate with cross-functional teams to define and implement new features', 'Mentor junior engineers and contribute to engineering culture', 'Participate in on-call rotations to ensure platform reliability', 'Conduct code reviews and advocate for best practices'] },
@@ -247,11 +262,13 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       var feeNote = '';
       if (job.fee > 0) {
-        feeNote = '<div class="bonus-note" style="margin-bottom:2rem;"><span class="icon">&#128274;</span><div><strong>Pro Access Required:</strong> This job pays $10+/hr and requires a <strong>$' + job.fee.toFixed(2) + '</strong> Pro per-job fee. <a href="pricing.html" style="color:#E85D3A;font-weight:600;">Unlock access &rarr;</a></div></div>';
+        var planLabel = (job.feeLabel || 'pro').toLowerCase();
+        feeNote = '<div class="bonus-note" style="margin-bottom:2rem;"><span class="icon">&#128274;</span><div><strong>Access Required:</strong> This job requires a <strong>$' + job.fee.toFixed(2) + '</strong> ' + job.feeLabel + ' fee. <a href="payment.html?plan=' + planLabel + '" style="color:#E85D3A;font-weight:600;">Pay to unlock &rarr;</a></div></div>';
       }
       var sidebarFee = '';
       if (job.fee > 0) {
-        sidebarFee = '<div class="job-sidebar-section" style="background:rgba(46,158,143,0.06);padding:1.2rem;border-radius:0.4rem;border:1px solid rgba(46,158,143,0.15);"><h4 style="font-size:1.3rem;margin-bottom:0.4rem;">Plan Required</h4><p style="font-size:2rem;font-weight:700;color:#E85D3A;">Pro - $' + job.fee.toFixed(2) + '</p><p style="font-size:1.2rem;color:#6B687A;margin:0;">Job pays $10+/hr &middot; Pay per access</p></div>';
+        var planLabel = (job.feeLabel || 'pro').toLowerCase();
+        sidebarFee = '<div class="job-sidebar-section" style="background:rgba(46,158,143,0.06);padding:1.2rem;border-radius:0.4rem;border:1px solid rgba(46,158,143,0.15);"><h4 style="font-size:1.3rem;margin-bottom:0.4rem;">' + job.feeLabel + ' Required</h4><p style="font-size:2rem;font-weight:700;color:#E85D3A;">$' + job.fee.toFixed(2) + '</p><p style="font-size:1.2rem;color:#6B687A;margin:0;"><a href="payment.html?plan=' + planLabel + '" style="color:#E85D3A;font-weight:600;">Pay to unlock &rarr;</a></p></div>';
       }
       var whatYoullDoHtml = '';
       if (job.whatYoullDo) {
@@ -316,7 +333,9 @@ document.addEventListener('DOMContentLoaded', function () {
         + '<div class="apply-box">'
         + (job.isEmployerJob
           ? '<button class="apply-btn" onclick="openJobApply(\'' + job.id + '\', \'' + job.title.replace(/'/g, "\\'") + '\')">Apply Now</button>'
-          : '<a href="pricing.html" class="apply-btn">Unlock &amp; Apply' + (job.fee > 0 ? ' - $' + job.fee.toFixed(2) : '') + '</a>')
+          : job.fee > 0
+            ? '<a href="payment.html?plan=' + job.feeLabel.toLowerCase() + '" class="apply-btn">Unlock Full Details - $' + job.fee.toFixed(2) + '</a>'
+            : '<span style="display:block;padding:1rem 0;color:#2E9E8F;font-weight:600;">&#10003; Free to View</span>')
         + '<a href="#" class="save-btn" id="favBtn_' + job.id + '" onclick="toggleFavorite(\'' + job.id + '\');return false;" style="color:#6B687A;">' + ((lj('tl_fav_' + ls('tl_user_email')) || []).indexOf(String(job.id)) > -1 ? '&#9733; Saved' : '&#9734; Save to Favorites') + '</a>'
         + '</div>'
         + sidebarFee
