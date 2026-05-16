@@ -432,6 +432,18 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   var payCur = el('paymentCurrency');
+  window.syncPayAmount = function () {
+    var rates = { USD: 1, KES: 130, NGN: 1550, EUR: 0.92, GBP: 0.79, INR: 83 };
+    var cur = payCur ? payCur.value : 'USD';
+    var rate = rates[cur] || 1;
+    var p = new URLSearchParams(window.location.search);
+    var plan = p.get('plan') || 'beginner';
+    var amts = { beginner: 1, premium: 2, pro: 5 };
+    var usdAmt = amts[plan] || 1;
+    var converted = usdAmt * rate;
+    var formatted = cur === 'KES' || cur === 'NGN' || cur === 'INR' ? converted.toFixed(0) : converted.toFixed(2);
+    qsa('#payAmount').forEach(function (el) { el.textContent = formatted + ' ' + cur; });
+  };
   if (payCur) payCur.addEventListener('change', syncPayAmount);
   (function () {
     var p2 = new URLSearchParams(window.location.search);
@@ -446,6 +458,26 @@ document.addEventListener('DOMContentLoaded', function () {
       if (el('planDesc')) el('planDesc').textContent = descs[plan];
     }
   })();
+
+  // ── Payment method selection → show details ──
+  var selMethod = null;
+  qsa('.payment-method-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      qsa('.payment-method-btn').forEach(function (b) { b.classList.remove('selected'); });
+      this.classList.add('selected');
+      selMethod = this.getAttribute('data-method');
+      var dc = el('paymentDetailsContent');
+      if (selMethod === 'mpesa') {
+        dc.innerHTML = '<div class="pd-box"><h4>M-Pesa Paybill</h4><p><strong>Paybill Number:</strong> 400200</p><p><strong>Account:</strong> 1158263</p><p><strong>Amount:</strong> <span id="payAmount">$2.00</span></p><p style="font-size:1.2rem;color:#6B687A;margin-top:1rem;">Go to M-Pesa &rarr; Lipa na M-Pesa &rarr; Paybill &rarr; Enter <strong>400200</strong> &rarr; Account <strong>1158263</strong> &rarr; Enter amount &rarr; Enter PIN &rarr; Send. Then click "I\'ve Completed the Payment" below.</p></div>';
+      } else if (selMethod === 'paypal') {
+        dc.innerHTML = '<div class="pd-box"><h4>PayPal</h4><p><strong>Send payment to:</strong> maingi6002@gmail.com</p><p><strong>Amount:</strong> <span id="payAmount">$2.00</span></p><p style="font-size:1.2rem;color:#6B687A;margin-top:1rem;">Log in to your PayPal account, send the exact amount to <strong>maingi6002@gmail.com</strong> as Goods &amp; Services. Then click "I\'ve Completed the Payment" below.</p></div>';
+      }
+      el('paymentDetails').style.display = 'block';
+      var st = el('paymentStatus');
+      if (st) st.style.display = 'none';
+      syncPayAmount();
+    });
+  });
 
   // ── User submits payment → pending (admin confirms later) ──
   var cfBtn = el('confirmPayment');

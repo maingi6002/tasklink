@@ -426,9 +426,13 @@ input, button, select { font-family: inherit; }
 .payment-methods { max-width: 48rem; margin: 0 auto; display: flex; flex-direction: column; gap: 1.2rem; }
 .payment-method-btn { display: flex; align-items: center; gap: 1.2rem; padding: 1.6rem 2rem; border: 1.5px solid #E8E6E0; border-radius: 0.8rem; background: #fff; cursor: pointer; transition: all 0.15s; font-size: 1.5rem; font-family: inherit; text-align: left; width: 100%; }
 .payment-method-btn:hover { border-color: #2E9E8F; box-shadow: 0 2px 8px rgba(46,158,143,0.08); }
+.payment-method-btn.selected { border-color: #2E9E8F; background: rgba(46,158,143,0.04); box-shadow: 0 0 0 1px #2E9E8F; }
 .payment-method-btn .pm-icon { width: 4rem; height: 4rem; background: #F7F5F0; border-radius: 0.6rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0; }
 .payment-method-btn .pm-label { font-weight: 600; color: #1A1A4E; }
 .payment-method-btn .pm-desc { font-size: 1.3rem; color: #6B687A; }
+.pd-box h4 { font-size: 1.5rem; margin-bottom: 1.2rem; color: #1A1A4E; }
+.pd-box p { margin: 0.6rem 0; font-size: 1.4rem; color: #333; }
+.pd-box strong { color: #1A1A4E; }
 .payment-details { display: none; max-width: 48rem; margin: 1.6rem auto 0; background: #F7F5F0; border: 1px solid #E8E6E0; border-radius: 0.8rem; padding: 2rem; }
 .payment-details.open { display: block; }
 .payment-details h4 { font-size: 1.5rem; margin-bottom: 1.2rem; color: #1A1A4E; }
